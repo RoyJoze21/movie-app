@@ -84,16 +84,19 @@ function App() {
 
   return (
     <div>
-      <h2 className="text-center mt-5 mb-5">Trailer Popular Movies</h2>
+      <div className='poslog'>
+      <h2 className="text-center fw-bold fs-1 mt-5 mb-5"> AAFmovies </h2>
+      <img src="https://i.postimg.cc/P5tWHyY0/xnxnxnx-removebg-preview.png"  width="100" />
+      </div>
 
       {/* el buscador */}
       <form className="container mb-4" onSubmit={searchMovies}>
         <input
           type="text"
-          placeholder="search"
+          placeholder="buscar"
           onChange={(e) => setSearchKey(e.target.value)}
         />
-        <button className="btn btn-primary">Search</button>
+        <button className="btn btn-danger">Buscar</button>
       </form>
 
       {/* contenedor para previsualizar  */}
@@ -152,7 +155,7 @@ function App() {
                     }}
                   />
                   <button onClick={() => setPlaying(false)} className="boton">
-                    Close
+                    Cerrar
                   </button>
                 </>
               ) : (
@@ -164,13 +167,13 @@ function App() {
                         onClick={() => setPlaying(true)}
                         type="button"
                       >
-                        Play Trailer
+                        Reproducir
                       </button>
                     ) : (
                       "Sorry, no trailer available"
                     )}
-                    <h1 className="text-white">{movie.title}</h1>
-                    <p className="text-white">{movie.overview}</p>
+                    <h1 className="text-white shadow">{movie.title}</h1>
+                    {/* <p className="text-white">{movie.overview}</p> */}
                   </div>
                 </div>
               )}
