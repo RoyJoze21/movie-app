@@ -1,5 +1,5 @@
 
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import axios from 'axios'
 import './App.css';
 import { useState } from 'react';
@@ -22,7 +22,7 @@ function App() {
   const [playing, setPlaying] = useState(false);
 
   // funcion para realizar la peticion get a la api
-  const fetchMovies = async (searchKey) => {
+  const fetchMovies = useCallback( async (searchKey) => {
     const type = searchKey ? "search" : "discover";
     const {
       data: { results },
@@ -41,7 +41,7 @@ function App() {
     if (results.length) {
       await fetchMovie(results[0].id);
     }
-  };
+  },[]);
 
   // funcion para la peticion de un solo objeto y mostrar en reproductor de videos
   const fetchMovie = async (id) => {
@@ -80,13 +80,13 @@ function App() {
 
   useEffect(() => {
     fetchMovies();
-  }, []);
+  }, [fetchMovies]);
 
   return (
     <div>
       <div className='poslog'>
       <h2 className="text-center fw-bold fs-1 mt-5 mb-5"> AAFmovies </h2>
-      <img src="https://i.postimg.cc/P5tWHyY0/xnxnxnx-removebg-preview.png"  width="100" />
+      <img src="https://i.postimg.cc/P5tWHyY0/xnxnxnx-removebg-preview.png " alt="logo del instituto"  width="100" />
       </div>
 
       {/* el buscador */}
